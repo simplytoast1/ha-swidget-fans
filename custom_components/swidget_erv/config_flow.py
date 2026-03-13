@@ -51,7 +51,7 @@ class SwidgetErvConfigFlow(ConfigFlow, domain=DOMAIN):
     @ha_callback
     def async_get_options_flow(config_entry):
         """Return the options flow handler."""
-        return SwidgetErvOptionsFlow(config_entry)
+        return SwidgetErvOptionsFlow()
 
     def __init__(self) -> None:
         """Initialize the config flow."""
@@ -260,10 +260,6 @@ class SwidgetErvOptionsFlow(OptionsFlow):
     Accessible from Settings → Devices & Services → Swidget ERV → Configure.
     """
 
-    def __init__(self, config_entry) -> None:
-        """Initialize the options flow."""
-        self.config_entry = config_entry
-
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
@@ -271,7 +267,7 @@ class SwidgetErvOptionsFlow(OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
-        # Show current value as default
+        # Show current value as default (self.config_entry is set by HA)
         current_interval = self.config_entry.options.get(
             CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL
         )
