@@ -67,11 +67,6 @@
       "self_diagnostic": {
         "name": "Self-Diagnostic"
       }
-    },
-    "number": {
-      "balancing_offset": {
-        "name": "Balancing Offset"
-      }
     }
   }
 }

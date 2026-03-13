@@ -8,7 +8,7 @@ Setup flow:
   2. async_setup_entry creates a coordinator, fetches the device summary
      to learn capabilities, then performs the first state poll.
   3. The coordinator is stored on the config entry's runtime_data and
-     shared with all platform entities (fan, switch, sensor, number).
+     shared with all platform entities (fan, switch, sensor).
   4. An options update listener watches for poll interval changes from the UI.
 """
 
@@ -29,7 +29,6 @@ _LOGGER = logging.getLogger(__name__)
 # Platforms this integration provides
 PLATFORMS: list[Platform] = [
     Platform.FAN,
-    Platform.NUMBER,
     Platform.SENSOR,
     Platform.SWITCH,
 ]
@@ -61,7 +60,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: SwidgetErvConfigEntry) -
     # Listen for options changes (e.g. poll interval adjusted in the UI)
     entry.async_on_unload(entry.add_update_listener(_async_options_updated))
 
-    # Forward setup to each platform (fan.py, switch.py, sensor.py, number.py)
+    # Forward setup to each platform (fan.py, switch.py, sensor.py)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True

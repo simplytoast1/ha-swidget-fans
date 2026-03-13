@@ -1,7 +1,7 @@
 """Switch platform for the Swidget ERV integration.
 
 Creates switches for device functions that have on/off behavior:
-  - Boost mode: an override that temporarily increases fan speed.
+  - Boost mode: runs the fan at full power. Turning boost off also turns off the fan.
   - Light: an optional light output on the ERV unit (may not be
     physically connected on all installations).
 
@@ -44,9 +44,9 @@ async def async_setup_entry(
 class SwidgetErvBoostSwitch(SwidgetErvEntity, SwitchEntity):
     """Switch for ERV boost mode.
 
-    Boost is a temporary override that increases fan speed beyond the
-    current CFM setting. It operates independently from the fan entity.
-    State is read from host.components.0.boost.mode ("on" / "off").
+    Boost runs the fan at full power. Turning boost off also turns the
+    fan off entirely. State is read from host.components.0.boost.mode
+    ("on" / "off").
     """
 
     _attr_translation_key = "boost"
@@ -66,13 +66,13 @@ class SwidgetErvBoostSwitch(SwidgetErvEntity, SwitchEntity):
         return mode == "on"
 
     async def async_turn_on(self, **kwargs: Any) -> None:
-        """Activate boost mode."""
+        """Activate boost mode (runs fan at full power)."""
         await self.coordinator.async_send_command(
             {"host": {"components": {"0": {"boost": {"mode": "on"}}}}}
         )
 
     async def async_turn_off(self, **kwargs: Any) -> None:
-        """Deactivate boost mode."""
+        """Deactivate boost mode (also turns off the fan)."""
         await self.coordinator.async_send_command(
             {"host": {"components": {"0": {"boost": {"mode": "off"}}}}}
         )

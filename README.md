@@ -10,12 +10,11 @@ A custom [Home Assistant](https://www.home-assistant.io/) integration for **Swid
 ## Features
 
 - **Fan control** — Turn the exhaust fan on/off, set speed by preset CFM values or percentage
-- **Boost mode** — Toggle boost override via a switch entity
+- **Boost mode** — Run the fan at full power with a single toggle
 - **Light control** — Toggle the optional light output
 - **Power monitoring** — Real-time and average wattage sensors
 - **Exhaust CFM** — Dedicated sensor for airflow graphing
 - **Condensation status** — Monitor the condensation management module
-- **Balancing offset** — Adjust supply/exhaust balance via a number slider
 - **Diagnostics** — Wi-Fi signal strength and self-diagnostic sensors
 - **Auto-discovery** — Devices are detected via SSDP and DHCP
 
@@ -54,7 +53,7 @@ Once configured, the integration creates the following entities:
 | Entity | Type | Description |
 |--------|------|-------------|
 | Exhaust Fan | `fan` | Main fan control — on/off, speed presets (CFM), percentage |
-| Boost | `switch` | Toggle boost mode on/off |
+| Boost | `switch` | Full power mode — turning off also stops the fan |
 | Light | `switch` | Toggle light output on/off |
 | Power | `sensor` | Current power consumption (W) |
 | Average Power | `sensor` | Average power consumption (W) |
@@ -62,8 +61,6 @@ Once configured, the integration creates the following entities:
 | Wi-Fi Signal | `sensor` | RSSI signal strength (dBm) |
 | Condensation | `sensor` | Condensation module status |
 | Self-Diagnostic | `sensor` | Device health (0 = healthy) |
-| Balancing Offset | `number` | Supply/exhaust balance adjustment (-10 to +10) |
-
 Entities are created dynamically based on what the device reports. If your device doesn't have a particular function (e.g. light), that entity won't be created.
 
 ## Fan Speed Control
@@ -110,7 +107,6 @@ Contributions are welcome! Some areas that could use exploration:
 - **Timer function** — The device reports a "timer" function but the command format is unknown
 - **Raw function** — Purpose unknown
 - **Condensation states** — Only "dormant" has been observed so far
-- **Balancing offset range** — The actual min/max values are not documented
 
 ## License
 
