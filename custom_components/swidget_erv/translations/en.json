@@ -1,0 +1,77 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Swidget ERV",
+        "description": "Enter the IP address of your Swidget ERV device.",
+        "data": {
+          "host": "Host",
+          "password": "Access Key (optional)"
+        }
+      },
+      "discovery_confirm": {
+        "title": "Swidget ERV Discovered",
+        "description": "A Swidget ERV device was found at {host}. Enter the access key if one is set, or leave blank.",
+        "data": {
+          "password": "Access Key (optional)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the device. Verify the IP address and that the device is powered on."
+    },
+    "abort": {
+      "already_configured": "This device is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Swidget ERV Options",
+        "data": {
+          "scan_interval": "Poll interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "fan": {
+      "exhaust_fan": {
+        "name": "Exhaust Fan"
+      }
+    },
+    "switch": {
+      "boost": {
+        "name": "Boost"
+      },
+      "light": {
+        "name": "Light"
+      }
+    },
+    "sensor": {
+      "power_current": {
+        "name": "Power"
+      },
+      "power_average": {
+        "name": "Average Power"
+      },
+      "exhaust_cfm": {
+        "name": "Exhaust CFM"
+      },
+      "rssi": {
+        "name": "Wi-Fi Signal"
+      },
+      "condensation": {
+        "name": "Condensation"
+      },
+      "self_diagnostic": {
+        "name": "Self-Diagnostic"
+      }
+    },
+    "number": {
+      "balancing_offset": {
+        "name": "Balancing Offset"
+      }
+    }
+  }
+}
