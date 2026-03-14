@@ -4,16 +4,6 @@
   "codeowners": ["@simplytoast1"],
   "config_flow": true,
   "dependencies": ["ssdp", "dhcp"],
-  "documentation": "https://github.com/simplytoast1/ha-swidget-fans",
-  "issue_tracker": "https://github.com/simplytoast1/ha-swidget-fans/issues",
-  "iot_class": "local_polling",
-  "requirements": [],
-  "version": "1.0.4",
-  "ssdp": [
-    {
-      "st": "urn:swidget:pico:1"
-    }
-  ],
   "dhcp": [
     {
       "hostname": "swidget*"
@@ -24,5 +14,15 @@
     {
       "macaddress": "24587C*"
     }
-  ]
+  ],
+  "documentation": "https://github.com/simplytoast1/ha-swidget-fans",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/simplytoast1/ha-swidget-fans/issues",
+  "requirements": [],
+  "ssdp": [
+    {
+      "st": "urn:swidget:pico:1"
+    }
+  ],
+  "version": "1.0.4"
 }
