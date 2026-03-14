@@ -112,7 +112,7 @@ class SwidgetErvCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 resp = await self._session.get(
                     f"{self._base_url}/api/v1/summary",
                     headers=self._headers,
-                    timeout=aiohttp.ClientTimeout(total=10),
+                    timeout=aiohttp.ClientTimeout(total=30),
                 )
                 resp.raise_for_status()
                 self.summary = await resp.json()
@@ -132,7 +132,7 @@ class SwidgetErvCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 resp = await self._session.get(
                     f"{self._base_url}/api/v1/state",
                     headers=self._headers,
-                    timeout=aiohttp.ClientTimeout(total=10),
+                    timeout=aiohttp.ClientTimeout(total=30),
                 )
                 resp.raise_for_status()
                 return await resp.json()
@@ -161,7 +161,7 @@ class SwidgetErvCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                     f"{self._base_url}/api/v1/command",
                     json=payload,
                     headers=self._headers,
-                    timeout=aiohttp.ClientTimeout(total=10),
+                    timeout=aiohttp.ClientTimeout(total=30),
                 )
                 resp.raise_for_status()
                 result = await resp.json()
