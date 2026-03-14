@@ -5,9 +5,10 @@
   "config_flow": true,
   "dependencies": ["ssdp", "dhcp"],
   "documentation": "https://github.com/simplytoast1/ha-swidget-fans",
+  "issue_tracker": "https://github.com/simplytoast1/ha-swidget-fans/issues",
   "iot_class": "local_polling",
   "requirements": [],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "ssdp": [
     {
       "st": "urn:swidget:pico:1"
@@ -18,10 +19,10 @@
       "hostname": "swidget*"
     },
     {
-      "macaddress": "24A160"
+      "macaddress": "24A160*"
     },
     {
-      "macaddress": "24587C"
+      "macaddress": "24587C*"
     }
   ]
 }
